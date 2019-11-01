@@ -43,7 +43,7 @@ public class RunMe {
 	void displayManagementTree(List<Employee> employees) {
 		
 		// we cannot do without our highest boss
-		Employee boss = new Employee(0, "The boss", MAX_VALUE); // this itself is not so beautiful
+		Employee boss = new Employee(0, "The boss", MAX_VALUE);
 		boss.depth = 0; // the root of the tree
 		employees.add(boss);
 
@@ -69,13 +69,13 @@ public class RunMe {
 		});
 
 		// let's use the traversal-opportunity to set the tree depth
-		TreeTraverser<Employee> traverser = TreeTraverser.using(node -> {
-			Set<Employee> children = node.getManages();
-			children.forEach(c -> c.depth = node.depth + 1);
+		TreeTraverser<Employee> traverser = TreeTraverser.using(employeeNode -> {
+			Set<Employee> children = employeeNode.getManages();
+			children.forEach(c -> c.depth = employeeNode.depth + 1);
 			return children;
 		});
 		
-		// and perform a depth first search
+		// and perform a depth first traversal
 		traverser.preOrderTraversal(boss)
 						.stream()
 						.map(this::prettyPrintFormat) 
