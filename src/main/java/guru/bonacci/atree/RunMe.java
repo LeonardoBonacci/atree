@@ -1,4 +1,4 @@
-package guru.bonacci.kiwiplan;
+package guru.bonacci.atree;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Strings.repeat;
@@ -12,8 +12,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.Multimap;
 import com.google.common.collect.TreeTraverser;
 
 import lombok.Data;
@@ -53,8 +51,6 @@ public class RunMe {
 				employees.stream()
 						 .collect(toMap(Employee::getId, identity()));	
 
-		// this multimap represents our hierarchical tree structure
-		Multimap<Integer, Employee> managedBy = ArrayListMultimap.create();
 		employees.forEach(e -> {
 			if (e.getId() != boss.id) {
 				checkArgument(employeesById.keySet().contains(e.getManagerId()),
@@ -65,7 +61,6 @@ public class RunMe {
 				
 				employeesById.get(e.getManagerId()).addToManages(e);
 			}	
-			managedBy.put(e.getManagerId(), e);	
 		});
 
 		// let's use the traversal-opportunity to set the tree depth

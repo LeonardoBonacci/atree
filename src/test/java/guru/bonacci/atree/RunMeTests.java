@@ -1,4 +1,4 @@
-package guru.bonacci.kiwiplan;
+package guru.bonacci.atree;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static org.hamcrest.Matchers.is;
@@ -13,7 +13,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.contrib.java.lang.system.SystemOutRule;
 
-import guru.bonacci.kiwiplan.RunMe.Employee;
+import guru.bonacci.atree.RunMe;
+import guru.bonacci.atree.RunMe.Employee;
 
 public class RunMeTests {
 	
